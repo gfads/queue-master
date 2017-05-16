@@ -8,7 +8,7 @@ RUN mkdir -p /usr/src/app/certs && \
     echo -n " \
 !#/bin/sh \
 keytool -import -alias kay.cs.ubc.ca -file /usr/src/app/certs/ca.pem \
-exec /usr/local/bin/java.sh -jar ./app.jar --port=80 \
+/usr/local/bin/java.sh -jar ./app.jar --port=80 \
 " > load-ca.sh && chmod +x load-ca.sh
 
 
