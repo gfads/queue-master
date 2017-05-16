@@ -29,7 +29,12 @@ public class DockerSpawner {
 		if (dc == null) {
 			DockerClientConfig.DockerClientConfigBuilder builder = DockerClientConfig.createDefaultConfigBuilder();
 
+			builder.withDockerCertPath("/usr/src/app/certs")
+			       .withDockerTlsVerify(true)
+			       .withDockerHost("tcp://kay.cs.ubc.ca");
+			
             DockerClientConfig config = builder.build();
+               
             dc = DockerClientBuilder.getInstance(config).build();
 
             dc.pullImageCmd(imageName).withTag(imageVersion).exec(new PullImageResultCallback()).awaitSuccess();
@@ -38,6 +43,12 @@ public class DockerSpawner {
 			dockerPool = Executors.newFixedThreadPool(poolSize);
 		}
 	}
+	
+//	public static void main(String[] args) {
+//		DockerSpawner ds = new DockerSpawner();
+//		ds.init();
+//		ds.spawn();
+//	}
 
 	public void spawn() {
 		dockerPool.execute(new Runnable() {

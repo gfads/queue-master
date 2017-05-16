@@ -1,5 +1,7 @@
 FROM weaveworksdemos/msd-java:latest
 
+RUN mkdir -p /usr/src/app/certs
+
 WORKDIR /usr/src/app
 COPY *.jar ./app.jar
 
