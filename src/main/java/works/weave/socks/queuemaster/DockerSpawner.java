@@ -44,6 +44,7 @@ public class DockerSpawner {
 		}
 	}
 	
+	
 //	public static void main(String[] args) {
 //		DockerSpawner ds = new DockerSpawner();
 //		ds.init();
