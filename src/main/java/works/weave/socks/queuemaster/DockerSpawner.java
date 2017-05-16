@@ -31,7 +31,7 @@ public class DockerSpawner {
 
 			builder.withDockerCertPath("/usr/src/app/certs")
 			       .withDockerTlsVerify(true)
-			       .withDockerHost("tcp://kay.cs.ubc.ca");
+			       .withDockerHost("tcp://kay.cs.ubc.ca:2376");
 			
             DockerClientConfig config = builder.build();
                
