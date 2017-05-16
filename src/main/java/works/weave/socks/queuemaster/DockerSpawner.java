@@ -29,12 +29,11 @@ public class DockerSpawner {
 		if (dc == null) {
 			DockerClientConfig.DockerClientConfigBuilder builder = DockerClientConfig.createDefaultConfigBuilder();
 
-            DockerClientConfig config = builder.withDockerCertPath("/usr/src/app/certs")
- 			       							   .withDockerTlsVerify(true)
+            DockerClientConfig config = builder.withDockerTlsVerify(true)
+            								   .withDockerCertPath("/usr/src/app/certs")
+//					   						   .withDockerCertPath("C:/Users/adalr/Development/java/maverick/kay-certs/.certs")
  			                                   .withDockerHost("tcp://kay.cs.ubc.ca:2376")
- 			                                   .withRegistryUsername("adalrsjr1")
- 			                                   .withRegistryEmail("adalrsjr1@gmail.com")
- 			                                   .withRegistryPassword("!kmvdil8b#")
+ 			                                   .withApiVersion("1.20")
  			                                   .build();
                
             dc = DockerClientBuilder.getInstance(config).build();
