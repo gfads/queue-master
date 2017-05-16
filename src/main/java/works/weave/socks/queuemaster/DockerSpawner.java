@@ -27,13 +27,12 @@ public class DockerSpawner {
 
 	public void init() {
 		if (dc == null) {
-			DockerClientConfig.DockerClientConfigBuilder builder = DockerClientConfig.createDefaultConfigBuilder();
+			DockerClientConfig.DockerClientConfigBuilder builder = new DockerClientConfig.DockerClientConfigBuilder();
 
-			builder.withDockerCertPath("/usr/src/app/certs")
-			       .withDockerTlsVerify(true)
-			       .withDockerHost("tcp://kay.cs.ubc.ca:2376");
-			
-            DockerClientConfig config = builder.build();
+            DockerClientConfig config = builder.withDockerCertPath("/usr/src/app/certs")
+ 			       							   .withDockerTlsVerify(true)
+ 			                                   .withDockerHost("tcp://kay.cs.ubc.ca:2376")
+ 			                                   .build();
                
             dc = DockerClientBuilder.getInstance(config).build();
 
