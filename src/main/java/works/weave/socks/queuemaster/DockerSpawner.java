@@ -3,6 +3,7 @@ package works.weave.socks.queuemaster;
 import com.github.dockerjava.api.DockerClient;
 import com.github.dockerjava.api.command.CreateContainerResponse;
 import com.github.dockerjava.api.exception.DockerException;
+import com.github.dockerjava.core.DefaultDockerClientConfig;
 import com.github.dockerjava.core.DockerClientBuilder;
 import com.github.dockerjava.core.DockerClientConfig;
 import com.github.dockerjava.core.command.PullImageResultCallback;
@@ -27,17 +28,16 @@ public class DockerSpawner {
 
 	public void init() {
 		if (dc == null) {
-			DockerClientConfig.DockerClientConfigBuilder builder = DockerClientConfig.createDefaultConfigBuilder();
-
-            DockerClientConfig config = builder.withDockerTlsVerify(true)
-            								   .withDockerCertPath("/usr/src/app/certs")
-//					   						   .withDockerCertPath("C:/Users/adalr/Development/java/maverick/kay-certs/.certs")
- 			                                   .withDockerHost("tcp://kay.cs.ubc.ca:2376")
- 			                                   .withApiVersion("1.20")
- 			                                   .build();
+			DefaultDockerClientConfig.Builder config = DefaultDockerClientConfig.createDefaultConfigBuilder();
+//
+            config.withDockerTlsVerify(true)
+	//            .withDockerCertPath("/usr/src/app/certs")
+    		      .withDockerCertPath("C:/Users/adalr/Development/java/maverick/kay-certs/.certs")
+	              .withDockerHost("tcp://kay.cs.ubc.ca:2376")
+	              .withApiVersion("1.23")
+	              .build();
                
             dc = DockerClientBuilder.getInstance(config).build();
-
             dc.pullImageCmd(imageName).withTag(imageVersion).exec(new PullImageResultCallback()).awaitSuccess();
 		}
 		if (dockerPool == null) {
@@ -46,11 +46,11 @@ public class DockerSpawner {
 	}
 	
 	
-//	public static void main(String[] args) {
-//		DockerSpawner ds = new DockerSpawner();
-//		ds.init();
-//		ds.spawn();
-//	}
+	public static void main(String[] args) {
+		DockerSpawner ds = new DockerSpawner();
+		ds.init();
+		ds.spawn();
+	}
 
 	public void spawn() {
 		dockerPool.execute(new Runnable() {
