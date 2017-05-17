@@ -31,8 +31,8 @@ public class DockerSpawner {
 			DefaultDockerClientConfig.Builder config = DefaultDockerClientConfig.createDefaultConfigBuilder();
 //
             config.withDockerTlsVerify(true)
-	//            .withDockerCertPath("/usr/src/app/certs")
-    		      .withDockerCertPath("C:/Users/adalr/Development/java/maverick/kay-certs/.certs")
+	            .withDockerCertPath("/usr/src/app/certs")
+//    		      .withDockerCertPath("C:/Users/adalr/Development/java/maverick/kay-certs/.certs")
 	              .withDockerHost("tcp://kay.cs.ubc.ca:2376")
 	              .withApiVersion("1.23")
 	              .build();
