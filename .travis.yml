@@ -6,7 +6,8 @@ jdk:
 - oraclejdk8
 install: true
 env:
-- GROUP=adalrsjr1 COMMIT=$TRAVIS_COMMIT TAG=$TRAVIS_TAG REPO=queue-master;
+#- GROUP=adalrsjr1 COMMIT=$TRAVIS_COMMIT TAG=$TRAVIS_TAG REPO=queue-master;
+- GROUP=gfads COMMIT=$TRAVIS_COMMIT TAG=$TRAVIS_TAG REPO=queue-master;
 script:
 - set -e
 - "./scripts/build.sh;"
