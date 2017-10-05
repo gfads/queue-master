@@ -1,21 +1,26 @@
 package works.weave.socks.queuemaster.controllers;
 
-import com.rabbitmq.client.Channel;
-import org.springframework.amqp.AmqpException;
-import org.springframework.amqp.rabbit.core.ChannelCallback;
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
-import works.weave.socks.queuemaster.entities.HealthCheck;
-
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.springframework.amqp.AmqpException;
+import org.springframework.amqp.rabbit.core.ChannelCallback;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.rabbitmq.client.Channel;
+
+import works.weave.socks.queuemaster.entities.HealthCheck;
 
 @RestController
 public class HealthCheckController {
