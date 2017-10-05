@@ -45,11 +45,11 @@ public class DockerSpawner {
 		}
 	}
 		
-	public static void main(String[] args) {
-		DockerSpawner ds = new DockerSpawner();
-		ds.init();
-		ds.spawn();
-	}
+//	public static void main(String[] args) {
+//		DockerSpawner ds = new DockerSpawner();
+//		ds.init();
+//		ds.spawn();
+//	}
 	
 	private String getWeaveNetworkId() {
 		return dc.listNetworksCmd().withNameFilter(networkId).exec().get(0).getName();
